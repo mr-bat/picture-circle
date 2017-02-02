@@ -6,9 +6,21 @@
 	top: 10%;
 	margin-left: -256px;
 }
+
 #app {
 }
+
 .circle {
 	/*background: rgb(123, 0, 255);*/
 	border-radius: 50%;
+}
+
+.previewComponent {
+	position: absolute;
+	left: 35%;
+	bottom: 4%;
+}
+
+#imgPreview {
+	display: none;
 }
