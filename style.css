@@ -1,4 +1,4 @@
-.screen {
+#appScreen {
 	position: absolute;
 	width: 512px;
 	height: 512px;
@@ -9,6 +9,6 @@
 #app {
 }
 .circle {
-	background: #7B00FF;
+	/*background: rgb(123, 0, 255);*/
 	border-radius: 50%;
 }
