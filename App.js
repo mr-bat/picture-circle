@@ -10,34 +10,41 @@ class Circle extends React.Component {
 		}
 	}
 	hover() {
-		if(this.state.visible && this.props.size >= 10) {
+		if(this.state.visible && this.props.size >= 8) {
 			this.setState({visible:0});
 		}
 	}
 	render() {
-		let style = {
+		let defStyle = {
       		width: this.props.size + "px",
-			height: this.props.size + "px"
+			height: this.props.size + "px",
     	};
 		if(this.state.visible)
-			return <div style={style} className="circle" onMouseOver={this.hover.bind(this)} />;
+			return <div style={defStyle} className="circle" onMouseOver={this.hover.bind(this)} />;
 		else {
 			let newSize = this.props.size / 2;
-			return <SplitPane split="vertical" size="{newSize}%">
-				<SplitPane split="horizontal" size="{newSize}%" >
-					<Circle size = {newSize} />
-					<Circle size = {newSize} />
-				</SplitPane>
-				<SplitPane split="horizontal" size="{newSize}%" >
-					<Circle size = {newSize} />
-					<Circle size = {newSize} />
-				</SplitPane>
+			let rowStyle = {height: newSize + "px"};
+			let colStyle = {width: newSize + "px"};
+
+			return <SplitPane split="horizontal" size={newSize} allowResize={false}>
+				<div style={rowStyle}>
+					<SplitPane split="vertical" size={newSize} allowResize={false}>
+						<div style={colStyle}><Circle size = {newSize} /></div>
+						<div style={colStyle}><Circle size = {newSize} /></div>
+					</SplitPane>
+				</div>
+				<div>
+					<SplitPane split="vertical" size={newSize} allowResize={false}>
+						<div style={colStyle}><Circle size = {newSize} /></div>
+						<div style={colStyle}><Circle size = {newSize} /></div>
+					</SplitPane>
+				</div>
 			</SplitPane>
 		}
 	}
 }
 
 ReactDOM.render(
-    <Circle size="400" />,
+    <Circle size="512" />,
 	document.getElementById('app')
 );
