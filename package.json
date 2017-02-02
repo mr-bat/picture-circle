@@ -12,6 +12,7 @@
     "babel-preset-react": "^6.16.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-split-pane": "^0.1.57",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   },
