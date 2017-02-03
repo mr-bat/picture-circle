@@ -39,25 +39,25 @@ function renewPage() {
 					background: this.state.color
 				};
 				if(this.state.visible)
-				return <div style={defStyle} className="circle" onMouseOver={this.hover.bind(this)} />;
+					return <div style={defStyle} className="circle" onMouseOver={this.hover.bind(this)} />;
 				else {
 					let newSize = this.props.size / 2;
 					let rowStyle = {height: newSize + "px"};
 					let colStyle = {width: newSize + "px"};
 
 					return <SplitPane split="horizontal" size={newSize} allowResize={false}>
-					<div style={rowStyle}>
-					<SplitPane split="vertical" size={newSize} allowResize={false}>
-					<div style={colStyle}><Circle size = {newSize} /></div>
-					<div style={colStyle}><Circle size = {newSize} /></div>
-					</SplitPane>
-					</div>
-					<div>
-					<SplitPane split="vertical" size={newSize} allowResize={false}>
-					<div style={colStyle}><Circle size = {newSize} /></div>
-					<div style={colStyle}><Circle size = {newSize} /></div>
-					</SplitPane>
-					</div>
+						<div style={rowStyle}>
+							<SplitPane split="vertical" size={newSize} allowResize={false}>
+								<div style={colStyle}><Circle size = {newSize} /></div>
+								<div style={colStyle}><Circle size = {newSize} /></div>
+							</SplitPane>
+						</div>
+						<div>
+							<SplitPane split="vertical" size={newSize} allowResize={false}>
+								<div style={colStyle}><Circle size = {newSize} /></div>
+								<div style={colStyle}><Circle size = {newSize} /></div>
+							</SplitPane>
+						</div>
 					</SplitPane>
 				}
 			}

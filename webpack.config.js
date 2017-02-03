@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 var config = {
 	entry: './main.js',
 	output: {
@@ -8,6 +10,16 @@ var config = {
 		inline : true,
 		port: 3434
 	},
+	plugins: [
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify('production')
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false
+			}
+		})
+	],
 	module: {
 		loaders: [
 			{
