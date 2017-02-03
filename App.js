@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SplitPane from 'react-split-pane';
+import picture from './PictureEvents';
 const getPixels = require("get-pixels");
 
 let prevUrl;
-
-setInterval( () => {
+function renewPage() {
 	let Url = document.getElementById('imgPreview');
 	console.log(`tada!!!`);
 	console.log(Url);
 	if(!Url) Url = {src: 'avatar.jpg'};
+	if(Url.src != prevUrl) {
 	getPixels(Url.src, function(err, pixels) {
 		if(err) {
 			console.error("Bad image path");
@@ -85,9 +86,16 @@ setInterval( () => {
 		if(prevUrl != Url.src) {
 			prevUrl = Url.src;
 			ReactDOM.render(
-			<Circle size="512" />,
-			document.getElementById('app')
+				<Circle size="512" />,
+				document.getElementById('app')
 			);
 		}
 	});
-}, 100);
+	}
+}
+exports.renewPage = renewPage;
+//DEBUG: something seems wrong while it only imports renewPage in main!
+picture.on("changed", () => {
+	console.log(`picture changed!`);
+	renewPage();
+});

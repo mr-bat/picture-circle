@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import picture from './PictureEvents';
 
 class ImageUpload extends React.Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class ImageUpload extends React.Component {
         return (
             <div className="previewComponent">
                 <input className="fileInput" type="file" onChange={(e)=>this._handleImageChange(e)} />
-                <img id="imgPreview" src={imagePreviewUrl} />
+                <img id="imgPreview" src={imagePreviewUrl}  onLoad={()=>{picture.emit('changed');}} />
             </div>
         );
     }

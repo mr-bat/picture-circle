@@ -1,2 +1,2 @@
-import App from './App';
-import ImageUpload from './Image'
+import renewPage from './App';
+import ImageUpload from './Image';
