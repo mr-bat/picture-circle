@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SplitPane from 'react-split-pane';
 import picture from './PictureEvents';
 const getPixels = require("get-pixels");
 
@@ -42,23 +41,19 @@ function renewPage() {
 					return <div style={defStyle} className="circle" onMouseOver={this.hover.bind(this)} />;
 				else {
 					let newSize = this.props.size / 2;
-					let rowStyle = {height: newSize + "px"};
-					let colStyle = {width: newSize + "px"};
+					let colStyle = {width: newSize + "px", height: newSize + "px"};
+					let panel= {float:"left", width:"50%"};
 
-					return <SplitPane split="horizontal" size={newSize} allowResize={false}>
-						<div style={rowStyle}>
-							<SplitPane split="vertical" size={newSize} allowResize={false}>
-								<div style={colStyle}><Circle size = {newSize} /></div>
-								<div style={colStyle}><Circle size = {newSize} /></div>
-							</SplitPane>
+					return <div>
+						<div style={panel}>
+							<div style={colStyle}><Circle size = {newSize} /></div>
+							<div style={colStyle}><Circle size = {newSize} /></div>
 						</div>
-						<div>
-							<SplitPane split="vertical" size={newSize} allowResize={false}>
-								<div style={colStyle}><Circle size = {newSize} /></div>
-								<div style={colStyle}><Circle size = {newSize} /></div>
-							</SplitPane>
+						<div style={panel}>
+							<div style={colStyle}><Circle size = {newSize} /></div>
+							<div style={colStyle}><Circle size = {newSize} /></div>
 						</div>
-					</SplitPane>
+					</div>
 				}
 			}
 			componentDidMount() {
