@@ -5,7 +5,7 @@ import picture from './PictureEvents';
 class ImageUpload extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {imagePreviewUrl: 'avatar.jpg'};
+        this.state = {imagePreviewUrl: 'avatar-compressed.jpg'};
     }
 
     _handleImageChange(e) {
